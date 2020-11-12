@@ -11,5 +11,16 @@
   ],
   "include": [
     "src/**/*.d.ts"
-  ]
+  ],
+  "optimization": false,
+  "outputHashing": "none",
+  "extractCss": true,
+  "namedChunks": false,
+  "showCircularDependencies": false,
+  "aot": false,
+  "extractLicenses": false,
+  "statsJson": false,
+  "progress": false,
+  "vendorChunk": true,
+  "buildOptimizer": false
 }
