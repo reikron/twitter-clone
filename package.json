@@ -8,6 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "watch-server": "concurrently --kill-others \"nodemon --watch server/**/*.ts --ignore server/**/*.spec.ts -e ts,tsx --exec ts-node --project tsconfig.server.json server/main.ts\"",
     "start:dev": "concurrently --kill-others \"nodemon --watch server/**/*.ts --ignore server/**/*.spec.ts -e ts,tsx --exec ts-node --project tsconfig.server.json server/main.ts\" \"ng serve --proxy-config proxy.conf.json --open\""
   },
   "private": true,
@@ -22,11 +23,14 @@
     "@angular/router": "~11.0.0",
     "@nestjs/common": "^7.5.1",
     "@nestjs/core": "^7.5.1",
+    "@nestjs/typeorm": "^7.1.5",
     "bootstrap": "^4.5.3",
     "jquery": "^3.5.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.6.0",
+    "sqlite3": "^5.0.0",
     "tslib": "^2.0.0",
+    "typeorm": "^0.2.29",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
