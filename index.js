@@ -2,11 +2,10 @@ const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
-//const db = require("./server/db");
+const db = require("./server/db");
 const session = require("express-session");
-//const SessionStore = require("connect-session-knex")(session);
-//const sessionStore = new SessionStore({ knex: db });
-//const errorhandler = require("errorhandler");
+const SessionStore = require("connect-session-knex")(session);
+const sessionStore = new SessionStore({ knex: db });
 const glob = require("glob");
 
 const DIST = "twitter-clone";
@@ -32,11 +31,7 @@ if (isProduction) {
     }
   });
 }
-//app.use(session({ name: "sid", secret: "conduit", cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false, store: sessionStore }));
-/*if (!isProduction) {
-  app.use(errorhandler());
-}*/
-
+app.use(session({ name: "sid", secret: "conduit", cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false, store: sessionStore }));
 glob.sync("server/**/*?(.)routes.js").forEach(file => app.use("/api/",require("./" + file)));
 
 app.use((req, res, next) => {

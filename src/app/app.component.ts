@@ -14,6 +14,6 @@ export class AppComponent {
     private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.http.get<string>("/api/", { responseType: 'text' as 'json' }).subscribe(message => console.log("Server ping: %s", (this.message = message)));
+    this.http.get<string>("/api/", { responseType: 'text' as 'json' }).subscribe(message => console.log("Ping: %s", (this.message = message)));
   }
 }

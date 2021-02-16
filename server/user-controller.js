@@ -2,6 +2,9 @@ const db = require("./db");
 const { Role } = require("./user");
 const crypto = require("crypto");
 
+// todo: deactivate
+// done: all, create, get, update, destroy
+
 exports.all = async (req, res) => {
   db.select().from("users").then((users) => { // .where("role", "user") .where("active", "1")
     return users.map((user) => {
@@ -21,7 +24,8 @@ exports.create = async (req, res) => {
   user.timestamp = Date.now();
   db.insert(user).into("users").then((rows) => {
     user.id = rows[0];
-    res.status(200).json({ timestamp: user.timestamp, id: user.id });
+    delete user.passwordHash;
+    res.status(200).json(user);
   });
 }
 
